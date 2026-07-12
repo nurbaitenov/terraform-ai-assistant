@@ -2,31 +2,31 @@
 
 ## Overview
 
-Terraform AI Assistant is a local AI-powered tool that helps DevOps engineers understand Terraform infrastructure. It reads Terraform configuration files, sends them together with a user's question to a local DeepSeek model running on Ollama, and returns an explanation based on the project.
+Terraform AI Assistant is a local AI-powered tool that helps DevOps engineers understand Terraform infrastructure. It reads Terraform files, caches them in RAM, and uses DeepSeek running on Ollama to answer infrastructure-related questions.
 
 ---
 
 ## Features
 
-- Read Terraform files recursively
-- Supports `.tf`, `.tfvars`, and `.tfvars.json`
+- Reads `.tf`, `.tfvars`, and `.tfvars.json` files
+- Automatic RAM cache with refresh
 - Local AI using Ollama + DeepSeek
-- Interactive CLI
-- No external API required
+- Interactive command-line interface
 
 ---
 
 ## Project Structure
 
-```
+```text
 terraform-ai-assistant/
 │
 ├── app.py          # CLI
-├── assistant.py    # Coordinates the application
-├── reader.py       # Reads Terraform files
-├── ai.py           # Communicates with Ollama
+├── assistant.py    # Application logic
+├── ai.py           # AI communication
+├── reader.py       # Terraform reader
+├── config.py       # Configuration
+├── prompts.py      # AI prompt
 ├── terraform/      # Terraform project
-├── requirements.txt
 └── README.md
 ```
 
@@ -34,7 +34,7 @@ terraform-ai-assistant/
 
 ## Workflow
 
-```
+```text
 User
   │
   ▼
@@ -74,21 +74,10 @@ python app.py
 
 ## Example
 
-```
+```text
 Ask:
 > Which module creates the RDS?
 
 Answer:
 The RDS resources are defined in modules/rds/main.tf.
 ```
-
----
-
-## Future Improvements
-
-- RAG (Retrieval-Augmented Generation)
-- Terraform parser
-- Conversation memory
-- Security analysis
-- Streamlit web interface
-- Architecture visualization
