@@ -34,6 +34,8 @@ lockfile==0.12.2
 MarkupSafe==1.1.1
 netifaces==0.10.6
 oauthlib==3.0.2
+ollama==0.6.2
+openai==2.45.0
 ply==3.11
 prettytable==0.7.2
 prompt-toolkit==3.0.24
@@ -45,6 +47,7 @@ pyserial==3.4
 PySocks==1.7.1
 python-daemon==2.3.0
 python-dateutil==2.8.1
+python-dotenv==1.2.1
 pytz==2022.7.1
 PyYAML==5.4.1
 release-notification==1.2
