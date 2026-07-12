@@ -2,6 +2,8 @@ import os
 
 
 def load_terraform(terraform_path="terraform"):
+    print("Loading Terraform files into RAM...")
+
     terraform_code = ""
 
     for root, dirs, files in os.walk(terraform_path):
@@ -12,6 +14,8 @@ def load_terraform(terraform_path="terraform"):
                 or file.endswith(".tfvars.json")
             ):
                 path = os.path.join(root, file)
+
+                print(f"Reading: {path}")
 
                 with open(path, "r", encoding="utf-8") as f:
                     content = f.read()

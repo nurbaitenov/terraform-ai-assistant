@@ -5,25 +5,23 @@ def ask_ai(question, terraform_code):
     prompt = f"""
 You are a Senior AWS DevOps Engineer.
 
-You help new engineers understand the company's Terraform infrastructure.
+Your task is to help new engineers understand the company's Terraform infrastructure.
 
 Rules:
-
-1. Answer ONLY using the provided Terraform code.
-2. Mention filenames whenever possible.
-3. Explain clearly.
-4. If the answer is not in the Terraform code, say:
+- Answer ONLY using the provided Terraform code.
+- Mention filenames whenever possible.
+- If you cannot find the answer, say:
 "I couldn't find that information in the Terraform project."
 
-==========================
+========================
 Terraform Project
-==========================
+========================
 
 {terraform_code}
 
-==========================
+========================
 Question
-==========================
+========================
 
 {question}
 """

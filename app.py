@@ -8,6 +8,7 @@ while True:
     question = input("\nAsk (type 'exit' to quit): ")
 
     if question.lower() == "exit":
+        print("Goodbye!")
         break
 
     print("\nThinking...\n")
