@@ -1,13 +1,14 @@
 from assistant import ask
+from config import APP_NAME, EXIT_COMMAND
 
 print("=" * 60)
-print("Terraform AI Assistant")
+print(APP_NAME)
 print("=" * 60)
 
 while True:
-    question = input("\nAsk (type 'exit' to quit): ")
+    question = input(f"\nAsk (type '{EXIT_COMMAND}' to quit): ")
 
-    if question.lower() == "exit":
+    if question.lower() == EXIT_COMMAND:
         print("Goodbye!")
         break
 

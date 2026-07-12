@@ -1,39 +1,34 @@
 from ollama import chat
 
+from config import MODEL
+from prompts import SYSTEM_PROMPT
+
 
 def ask_ai(question, terraform_code):
-    prompt = f"""
-You are a Senior AWS DevOps Engineer.
-
-Your task is to help new engineers understand the company's Terraform infrastructure.
-
-Rules:
-- Answer ONLY using the provided Terraform code.
-- Mention filenames whenever possible.
-- If you cannot find the answer, say:
-"I couldn't find that information in the Terraform project."
-
-========================
-Terraform Project
-========================
+    try:
+        response = chat(
+            model=MODEL,
+            messages=[
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT,
+                },
+                {
+                    "role": "user",
+                    "content": f"""
+Terraform Project:
 
 {terraform_code}
 
-========================
-Question
-========================
+Question:
 
 {question}
-"""
+""",
+                },
+            ],
+        )
 
-    response = chat(
-        model="deepseek-r1:1.5b",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-            }
-        ],
-    )
+        return response["message"]["content"]
 
-    return response["message"]["content"]
+    except Exception as e:
+        return f"AI Error: {e}"
